@@ -8,9 +8,9 @@ pipeline {
              steps {
                  sh 'echo "Replacing build details in html and deplyment files"'
                  sh '''
-                     sed -i -e "s/@BuildNumber@/${BUILD_NUMBER}/; s/@GIT_COMMIT@/${GIT_COMMIT}/;" application/templates/index.html
+                     sed -i -e "s/@BuildNumber@/${BUILD_NUMBER}/; s/@GIT_COMMIT@/${GIT_COMMIT}/;" application/templates/about.html
 					 sed -i -e "s/@BuildNumber@/${BUILD_NUMBER}/;" k8s-deployment/deployment.yaml
-					 cat application/templates/index.html
+					 cat application/templates/about.html
 					 cat k8s-deployment/deployment.yaml
                  '''
              }

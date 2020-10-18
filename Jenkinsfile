@@ -15,13 +15,6 @@ pipeline {
                  '''
              }
          }
-        stage('SSH') {
-            steps {
-                sshagent(['kop-admin']) {
-                sh "scp -o StrictHostKeyChecking=no k8s-deployment/* ubuntu@18.206.165.206:/home/ubuntu"
-            }
-        }
-            
         }
         stage('Lint Dockerfile') {
             steps {
@@ -99,7 +92,7 @@ pipeline {
 
         stage('Post deployment test') {
             steps {
-                withAWS(credentials: 'aws-credentials', region: 'ap-southeast-2') {
+                withAWS(credentials: 'aws-credentials', region: 'us-east-1') {
                     sh '''
                         HOST=$(kubectl get service service-capstone | grep 'amazonaws.com' | awk '{print $4}')
                         curl $HOST -f

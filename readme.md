@@ -1,16 +1,20 @@
+# Udacity Cloud Devops Capstone
 
+## Suumary
 
+CI/CD pipeline for python flask applicaiton using rolling strategy, continues. 
 
+This service is devided in three part 
 
-## Allow jenkins to run docker
-> sudo groupadd docker
-> sudo usermod -aG docker jenkins
-> chmod 777 /var/run/docker.sock
+1) application : Flask web applicaiton
+    URL for applicaiton : 
+2) k8s-cluster : Template to create kubernetes cluster
+3) k8s-deployment : is for deployment services deployment which will triggered from jenkind
 
+## Jenkins pipeline
 
-## Jenkins server is configured to connect with Kubeernetes cluster using command line 'kubectl' binary.
-Switch to jenkins user and copy Kube config file into .kube/config folder.
+Jenkins pipeline include
 
-$ sudo -i -u jenkins
-$ cp /home/ubuntu/.kube/config ~/.kube/config
+Change
+
 

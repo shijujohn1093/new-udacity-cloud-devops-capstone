@@ -15,6 +15,11 @@ pipeline {
                  '''
              }
          }
+        stage('SSH') {
+            sshagent(['kop-admin']) {
+               sh "scp -o StrictHostKeyChecking=no k8s-deployment/* ubuntu@18.206.165.206:/home/ubuntu"
+            }
+        }
         stage('Lint Dockerfile') {
             steps {
                 script {
